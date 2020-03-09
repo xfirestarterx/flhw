@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -21,34 +23,34 @@ class Home extends StatefulWidget {
   final String title;
 
   @override
-  _State createState() => _State();
+  _HomeState createState() => _HomeState();
 }
 
-class _State extends State<Home> {
+const List<IconData> _iconsList = [
+  Icons.ac_unit,
+  Icons.account_circle,
+  Icons.add_photo_alternate,
+  Icons.arrow_back,
+  Icons.assignment_turned_in,
+  Icons.arrow_upward,
+  Icons.border_outer,
+  Icons.center_focus_weak,
+  Icons.event_note,
+  Icons.list,
+];
+
+class _HomeState extends State<Home> {
   static const _textSize = 18.0;
   String _customText = 'Your custom text';
-
-  static List<IconData> _iconsList = [
-    Icons.ac_unit,
-    Icons.account_circle,
-    Icons.add_photo_alternate,
-    Icons.arrow_back,
-    Icons.assignment_turned_in,
-    Icons.arrow_upward,
-    Icons.border_outer,
-    Icons.center_focus_weak,
-    Icons.event_note,
-    Icons.list,
-  ];
-
   IconData _currentIcon = _iconsList[0];
+  final _textEditingController = TextEditingController();
 
   final _drawer = Drawer(
     child: ListView(
       children: [
         for (int i = 1; i <= 3; i++)
           ListTile(
-            leading: Icon(Icons.chevron_right),
+            leading: const Icon(Icons.chevron_right),
             title: Text('List Item $i'),
             onTap: () => print('Tapped $i'),
           ),
@@ -59,17 +61,17 @@ class _State extends State<Home> {
   Widget _appBar() {
     return AppBar(
       title: Text(widget.title),
-      leading: Icon(Icons.account_circle),
+      leading: const Icon(Icons.account_circle),
     );
   }
 
   Widget _iconContainer() {
     return Container(
-      padding: EdgeInsets.all(15),
-      margin: EdgeInsets.only(bottom: 15),
+      padding: const EdgeInsets.all(15),
+      margin: const EdgeInsets.only(bottom: 15),
       decoration: BoxDecoration(
         color: Colors.blue[700],
-        borderRadius: BorderRadius.all(
+        borderRadius: const BorderRadius.all(
           Radius.circular(5),
         ),
       ),
@@ -92,22 +94,17 @@ class _State extends State<Home> {
 
   Widget _textFieldContainer() {
     return Container(
-      margin: EdgeInsets.all(15),
+      margin: const EdgeInsets.all(15),
       child: Column(
         children: [
           Text(
             _customText,
-            style: TextStyle(fontSize: _textSize),
+            style: const TextStyle(fontSize: _textSize),
           ),
           TextField(
-              controller: TextEditingController(
-                text: _customText,
-              ),
-              enabled: true,
-              onChanged: (String curVal) {
-                print('changed');
-                setState(() => _customText = curVal);
-              }),
+            controller: _textEditingController,
+            enabled: true,
+          ),
         ],
       ),
     );
@@ -115,14 +112,23 @@ class _State extends State<Home> {
 
   Widget _actionButton() {
     return FloatingActionButton(
-      child: Icon(Icons.autorenew),
+      child: const Icon(Icons.autorenew),
       onPressed: _updateCurrentIcon,
     );
   }
 
   void _updateCurrentIcon() {
-    _iconsList.shuffle();
-    setState(() => _currentIcon = _iconsList[0]);
+    final index = Random().nextInt(10);
+    setState(() => _currentIcon = _iconsList[index]);
+  }
+
+  @override
+  initState() {
+    _textEditingController
+      ..text = _customText
+      ..addListener(
+          () => setState(() => _customText = _textEditingController.text));
+    super.initState();
   }
 
   @override
