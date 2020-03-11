@@ -4,10 +4,6 @@ class Button extends StatelessWidget {
   final onPressed;
   final String _text;
 
-  // TODO
-  // А почему именнованные аргументы не могут
-  // начинаться с подчёркивания? Получается
-  // они всегда будут публичными?
   Button(this._text, { this.onPressed }): super();
 
   @override

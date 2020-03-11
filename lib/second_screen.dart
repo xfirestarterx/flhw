@@ -1,4 +1,4 @@
-import 'package:fl02/Button.dart';
+import 'package:fl02/button.dart';
 import 'package:flutter/material.dart';
 
 class SecondScreen extends StatelessWidget {

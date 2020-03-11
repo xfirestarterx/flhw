@@ -1,30 +1,12 @@
-import 'package:fl02/Button.dart';
-import 'package:fl02/Routes.dart';
+import 'package:fl02/button.dart';
+import 'package:fl02/routes.dart';
 import 'package:flutter/material.dart';
 
 class FirstScreen extends StatelessWidget {
   @override
   build(BuildContext ctx) {
     return WillPopScope(
-      onWillPop: () {
-        return showDialog(
-            context: ctx,
-            builder: (_) {
-              return AlertDialog(
-                title: Text('Confirm exit app'),
-                actions: [
-                  MaterialButton(
-                    child: Text('No'),
-                    onPressed: () => Navigator.of(ctx).pop(),
-                  ),
-                  MaterialButton(
-                    child: Text('Yes'),
-                    onPressed: () => Navigator.of(ctx).pop(),
-                  ),
-                ],
-              );
-            });
-      },
+      onWillPop: () => _onBackButton(ctx),
       child: Scaffold(
         body: Container(
           color: Colors.blue[700],
@@ -56,5 +38,25 @@ class FirstScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<bool> _onBackButton(BuildContext ctx) {
+    return showDialog(
+        context: ctx,
+        builder: (_) {
+          return AlertDialog(
+            title: Text('Confirm exit app'),
+            actions: [
+              MaterialButton(
+                child: Text('No'),
+                onPressed: () => Navigator.of(ctx).pop(),
+              ),
+              MaterialButton(
+                child: Text('Yes'),
+                onPressed: () => Navigator.of(ctx).pop(),
+              ),
+            ],
+          );
+        });
   }
 }
