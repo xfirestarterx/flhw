@@ -4,7 +4,7 @@ class Button extends StatelessWidget {
   final onPressed;
   final String _text;
 
-  Button(this._text, { this.onPressed }): super();
+  Button(this._text, { this.onPressed });
 
   @override
   build(BuildContext ctx) {
