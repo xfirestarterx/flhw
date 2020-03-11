@@ -1,6 +1,6 @@
-import 'package:fl02/FirstScreen.dart';
-import 'package:fl02/Routes.dart';
-import 'package:fl02/SecondScreen.dart';
+import 'package:fl02/first_screen.dart';
+import 'package:fl02/routes.dart';
+import 'package:fl02/second_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
