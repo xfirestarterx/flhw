@@ -58,7 +58,7 @@ class _FirstScreenState extends State {
             ),
             MaterialButton(
               child: Text('Yes'),
-              onPressed: () => SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
+              onPressed: () => Navigator.of(ctx).pop(true),
             ),
           ],
         );
