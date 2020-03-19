@@ -20,7 +20,7 @@ class SecondScreen extends StatelessWidget {
                 List<User> users = snapshot.data;
 
                 return ListView(
-                  children: _usersListView(users),
+                  children: _usersListView(users, ctx),
                 );
               } else {
                 return Center(
@@ -34,15 +34,15 @@ class SecondScreen extends StatelessWidget {
     );
   }
 
-  List<ListTile> _usersListView(List<User> users) {
-    return users.map((User user) => _getListTile(user)).toList();
+  List<ListTile> _usersListView(List<User> users, BuildContext ctx) {
+    return users.map((User user) => _getListTile(user, ctx)).toList();
   }
 
-  ListTile _getListTile(User user) {
+  ListTile _getListTile(User user, BuildContext ctx) {
     return ListTile(
       title: Text(user.name),
       subtitle: Text(user.email),
-      onTap: () {},
+      onTap: () => Navigator.of(ctx).pop(user),
     );
   }
 }
