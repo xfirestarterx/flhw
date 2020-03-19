@@ -1,8 +1,9 @@
 import 'package:fl02/button.dart';
 import 'package:fl02/models/user.dart';
 import 'package:fl02/routes.dart';
-import 'package:fl02/user_details_widget.dart';
+import 'package:fl02/user_details.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class FirstScreen extends StatefulWidget {
   @override
@@ -23,7 +24,7 @@ class _FirstScreenState extends State {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                _currentUser == null ? Container() : userDetailsWidget(_currentUser),
+                _currentUser == null ? Container() : UserDetails(_currentUser),
                 Button(
                   'Go to second screen',
                   onPressed: () => _onTapNextScreenButton(ctx),
@@ -57,7 +58,7 @@ class _FirstScreenState extends State {
             ),
             MaterialButton(
               child: Text('Yes'),
-              onPressed: () => Navigator.of(ctx).pop(),
+              onPressed: () => SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
             ),
           ],
         );

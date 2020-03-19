@@ -1,8 +1,14 @@
 import 'package:fl02/models/user.dart';
 import 'package:flutter/material.dart';
 
-Widget userDetailsWidget(User user) {
-  return Container(
+class UserDetails extends StatelessWidget {
+  final User user;
+
+  UserDetails(this.user);
+
+  @override
+  build(BuildContext ctx) {
+    return Container(
     margin: EdgeInsets.only(bottom: 15),
     child: DefaultTextStyle(
       style: TextStyle(
@@ -29,4 +35,5 @@ Widget userDetailsWidget(User user) {
       ),
     ),
   );
+  }
 }

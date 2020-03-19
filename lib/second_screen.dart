@@ -1,3 +1,4 @@
+import 'package:fl02/custom_list_tile.dart';
 import 'package:fl02/services/http_service.dart';
 import 'package:flutter/material.dart';
 import 'models/user.dart';
@@ -10,7 +11,6 @@ class SecondScreen extends StatelessWidget {
     return Scaffold(
       body: Container(
         color: Colors.blue[700],
-        // TODO: почему не работает DefaultTextStyle в данном случае?
         child: DefaultTextStyle(
           style: TextStyle(color: Colors.white),
           child: FutureBuilder(
@@ -34,14 +34,14 @@ class SecondScreen extends StatelessWidget {
     );
   }
 
-  List<ListTile> _usersListView(List<User> users, BuildContext ctx) {
+  List<CustomListTile> _usersListView(List<User> users, BuildContext ctx) {
     return users.map((User user) => _getListTile(user, ctx)).toList();
   }
 
-  ListTile _getListTile(User user, BuildContext ctx) {
-    return ListTile(
-      title: Text(user.name),
-      subtitle: Text(user.email),
+  CustomListTile _getListTile(User user, BuildContext ctx) {
+    return CustomListTile(
+      title: user.name,
+      subtitle: user.email,
       onTap: () => Navigator.of(ctx).pop(user),
     );
   }
