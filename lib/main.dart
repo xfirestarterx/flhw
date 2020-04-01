@@ -1,6 +1,4 @@
-import 'package:fl02/first_screen.dart';
-import 'package:fl02/routes.dart';
-import 'package:fl02/second_screen.dart';
+import 'package:fl02/main_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -13,11 +11,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: Routes.firstScreen,
-      routes: {
-        Routes.firstScreen: (_) => FirstScreen(),
-        Routes.secondScreen: (_) => SecondScreen()
-      },
+      home: MainScreen(),
     );
   }
 }
