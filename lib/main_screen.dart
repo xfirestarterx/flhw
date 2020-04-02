@@ -1,3 +1,4 @@
+import 'package:fl02/mapview.dart';
 import 'package:fl02/webview.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class MainScreen extends StatelessWidget {
 
   final _tabViews = [
     CustomWebView(),
-    Icon(Icons.directions_transit),
+    Mapview(),
     Icon(Icons.directions_bike),
   ];
 
