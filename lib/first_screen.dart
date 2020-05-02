@@ -3,7 +3,8 @@ import 'package:fl02/models/user.dart';
 import 'package:fl02/routes.dart';
 import 'package:fl02/user_details.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
+import 'l10n.dart';
 
 class FirstScreen extends StatefulWidget {
   @override
@@ -26,7 +27,7 @@ class _FirstScreenState extends State {
               children: [
                 _currentUser == null ? Container() : UserDetails(_currentUser),
                 Button(
-                  'Go to second screen',
+                  CustomLocalizations.of(ctx).goToSecondScreen,
                   onPressed: () => _onTapNextScreenButton(ctx),
                 ),
               ],
@@ -50,14 +51,14 @@ class _FirstScreenState extends State {
       context: ctx,
       builder: (_) {
         return AlertDialog(
-          title: Text('Confirm exit app'),
+          title: Text(CustomLocalizations.of(ctx).confirm),
           actions: [
             MaterialButton(
-              child: Text('No'),
+              child: Text(CustomLocalizations.of(ctx).no),
               onPressed: () => Navigator.of(ctx).pop(),
             ),
             MaterialButton(
-              child: Text('Yes'),
+              child: Text(CustomLocalizations.of(ctx).yes),
               onPressed: () => Navigator.of(ctx).pop(true),
             ),
           ],

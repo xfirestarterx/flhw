@@ -1,6 +1,8 @@
 import 'package:fl02/models/user.dart';
 import 'package:flutter/material.dart';
 
+import 'l10n.dart';
+
 class UserDetails extends StatelessWidget {
   final User user;
 
@@ -21,16 +23,16 @@ class UserDetails extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Name: ',
+                '${CustomLocalizations.of(ctx).name}: ',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               Text(user.name),
             ],
           ),
-          Text('Email: ${user.email}'),
-          Text('Full name: ${user.name}'),
-          Text('Phone: ${user.phone}'),
-          Text('Website: ${user.website}'),
+          Text('${CustomLocalizations.of(ctx).email}: ${user.email}'),
+          Text('${CustomLocalizations.of(ctx).fullName}: ${user.name}'),
+          Text('${CustomLocalizations.of(ctx).phone}: ${user.phone}'),
+          Text('${CustomLocalizations.of(ctx).website}: ${user.website}'),
         ],
       ),
     ),
